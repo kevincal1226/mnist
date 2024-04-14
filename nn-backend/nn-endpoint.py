@@ -4,7 +4,7 @@ import cairosvg
 import numpy as np
 from flask_cors import CORS
 from PIL import Image
-from nn import MLP # TODO: IMPORT MODEL HERE
+from nn import MLP
 from helper import shift_vector
 from pathlib import Path
 
@@ -14,7 +14,7 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 
 path = Path(__file__).parent / "data"
 
-MODEL_PARAMS = [784, 32, 32, 10] #TODO: Change to match your model parameters
+MODEL_PARAMS = [784, 32, 32, 10]
 mnist = MLP(MODEL_PARAMS, "data/weights.npy", "data/biases.npy", load_existing=True)
 
 @app.route("/api/", methods=['GET'])
