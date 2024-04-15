@@ -5,7 +5,7 @@ import numpy as np
 from flask_cors import CORS
 from PIL import Image
 from nn import MLP
-from helper import shift_vector
+from helper import shift_vector, trim_image
 from pathlib import Path
 import matplotlib.image
 
@@ -37,14 +37,15 @@ def query_mnist():
     x = x.mean(axis=2)
 
     # Calculate center of mass to center images
-    center_x = np.argmax(x.mean(axis=1))
-    center_y = np.argmax(x.mean(axis=0))
-    x = shift_vector(x, center_x, center_y, 28, 28)
-    matplotlib.image.imsave('before_flattening.png', x)
+    # center_x = np.argmax(x.mean(axis=1))
+    # center_y = np.argmax(x.mean(axis=0))
+    # x = shift_vector(x, center_x, center_y, 28, 28)
+    # matplotlib.image.imsave('before_flattening.png', x)
     # Flatten image, normalize
+    x = trim_image(x, 28, 28)
     x = x.flatten().reshape(784, 1)
     x = x / 255
-    print(x)
+    # print(x)
     matplotlib.image.imsave('after_flattening.png', x)
 
 
