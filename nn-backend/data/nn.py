@@ -178,12 +178,12 @@ def one_hot(Y):
     return one_hot_Y.T
 
 def main():
-    df = pd.read_csv('/data/train.csv')
+    df = pd.read_csv('train.csv')
     inputs = np.array(df.iloc[:, 1:])
     np.divide(inputs, 256.0)
     labels = np.array(df.iloc[:, 0])  
     # nn = MLP([784, 700, 500, 300, 10])
-    nn = MLP([784, 32, 32, 10], "data/weights.npy", "data/biases.npy", True)
+    nn = MLP([784, 32, 32, 10], "weights.npy", "biases.npy", True)
     X = np.array(inputs)
     X = X / 256.0
     Y = np.array(labels)
