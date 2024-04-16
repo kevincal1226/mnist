@@ -50,7 +50,7 @@ def trim_image(x, size_x: int, size_y: int):
     x = x[~row_contains_zeros]
 
     x = x.T
-    # matplotlib.image.imsave('trimmed_cols.png', x)
+    matplotlib.image.imsave('trimmed_rows_and_cols.png', x)
     print(x.shape)
     current_rows, current_cols = x.shape
     x = np.insert(x, 0, np.zeros((int((size_y - current_rows) / 2), x.shape[1])), axis=0)

@@ -6,3 +6,4 @@ flask
 cors
 cairosvg
 Pillow
+flask_cors

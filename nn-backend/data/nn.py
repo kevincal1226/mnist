@@ -205,8 +205,8 @@ def main():
     # with open("biases.npy", "wb") as f:
     #     for elem in nn.biases:
     #        np.save(f, elem)
-    # np.save(nn.wpath, np.array(nn.weights, dtype=object))
-    # np.save(nn.bpath, np.array(nn.biases, dtype=object))
+    np.save(nn.wpath, np.array(nn.weights, dtype=object))
+    np.save(nn.bpath, np.array(nn.biases, dtype=object))
 
 
 if __name__ == '__main__':
