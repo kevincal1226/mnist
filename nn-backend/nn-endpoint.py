@@ -9,6 +9,7 @@ from helper import shift_vector, trim_image
 from pathlib import Path
 import matplotlib.image
 import cv2
+from scipy.ndimage import zoom
 
 app = flask.Flask(__name__)
 cors = CORS(app)
@@ -16,7 +17,7 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 
 path = Path(__file__).parent / "data"
 
-MODEL_PARAMS = [784, 32, 32, 10]
+MODEL_PARAMS = [784, 128, 64, 64, 10]
 mnist = MLP(MODEL_PARAMS, "data/weights.npy", "data/biases.npy", load_existing=True)
 
 @app.route("/api/", methods=['GET'])
@@ -45,28 +46,28 @@ def query_mnist():
     # Flatten image, normalize
     x = trim_image(x, 28, 28)
     x = x.flatten().reshape(784, 1)
-    x = x / 255.0
+    x = x / 256.0
     # print(x)
-    matplotlib.image.imsave('after_flattening.png', x)
+    # matplotlib.image.imsave('after_flattening.png', x)
     
-    new_image = Image.open('trimmed_rows_and_cols.png')
-    print(new_image.size)
-    new_image = new_image.resize((24, 24), Image.Resampling.LANCZOS)
-    new_x = np.array(new_image)
-    new_x = new_x[:,:,:3]
-    new_x = new_x.mean(axis=2)
-    num_to_add = 2
-    new_x = np.insert(new_x, 0, np.zeros((num_to_add, new_x.shape[1])), axis=0)
-    new_x = np.append(new_x, np.zeros((num_to_add, new_x.shape[1])), axis=0)  
-    new_x = new_x.T  
-    new_x = np.insert(new_x, 0, np.zeros((num_to_add, new_x.shape[1])), axis=0)
-    new_x = np.append(new_x, np.zeros((num_to_add, new_x.shape[1])), axis=0)  
-    new_x = new_x.T
-    matplotlib.image.imsave('trimmed_and_resized.png', new_x)    
-    new_x[new_x < 60.0] = 0
-    matplotlib.image.imsave('hopefully_fixed.png', new_x)        
-    new_x = new_x.flatten().reshape(784, 1)
-    new_x = new_x / 255.0
+    # new_image = Image.open('trimmed_rows_and_cols.png')
+    # print(new_image.size)
+    # new_image = new_image.resize((24, 24), Image.Resampling.LANCZOS)
+    # new_x = np.array(new_image)
+    # new_x = new_x[:,:,:3]
+    # new_x = new_x.mean(axis=2)
+    # num_to_add = 2
+    # new_x = np.insert(new_x, 0, np.zeros((num_to_add, new_x.shape[1])), axis=0)
+    # new_x = np.append(new_x, np.zeros((num_to_add, new_x.shape[1])), axis=0)  
+    # new_x = new_x.T  
+    # new_x = np.insert(new_x, 0, np.zeros((num_to_add, new_x.shape[1])), axis=0)
+    # new_x = np.append(new_x, np.zeros((num_to_add, new_x.shape[1])), axis=0)  
+    # new_x = new_x.T
+    # matplotlib.image.imsave('trimmed_and_resized.png', new_x)    
+    # new_x[new_x < 80.0] = 0
+    # matplotlib.image.imsave('hopefully_fixed.png', new_x)        
+    # new_x = new_x.flatten().reshape(784, 1)
+    # new_x = new_x / 256.0
 
 
     # Generate prediction
