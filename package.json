@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "predeploy": "npm run build",
-    "deply": "gh-pages -dbuild",  
+    "deploy": "gh-pages -dbuild",  
     "start": "cd nn-frontend && npm start",
     "postinstall": "cd nn-frontend && npm ci"
   },
