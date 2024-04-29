@@ -1,10 +1,15 @@
 {
   "name": "nn-frontend",
   "version": "0.1.0",
+ "homepage": "https://kevincal1226.github.io/mnist",
   "private": true,
-  "dependencies": {},
   "scripts": {
+    "predeploy": "npm run build",
+    "deply": "gh-pages -dbuild",  
     "start": "cd nn-frontend && npm start",
     "postinstall": "cd nn-frontend && npm ci"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.1.1"
   }
 }

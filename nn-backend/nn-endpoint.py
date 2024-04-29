@@ -50,24 +50,24 @@ def query_mnist():
     # print(x)
     # matplotlib.image.imsave('after_flattening.png', x)
     
-    # new_image = Image.open('trimmed_rows_and_cols.png')
-    # print(new_image.size)
-    # new_image = new_image.resize((24, 24), Image.Resampling.LANCZOS)
-    # new_x = np.array(new_image)
-    # new_x = new_x[:,:,:3]
-    # new_x = new_x.mean(axis=2)
-    # num_to_add = 2
-    # new_x = np.insert(new_x, 0, np.zeros((num_to_add, new_x.shape[1])), axis=0)
-    # new_x = np.append(new_x, np.zeros((num_to_add, new_x.shape[1])), axis=0)  
-    # new_x = new_x.T  
-    # new_x = np.insert(new_x, 0, np.zeros((num_to_add, new_x.shape[1])), axis=0)
-    # new_x = np.append(new_x, np.zeros((num_to_add, new_x.shape[1])), axis=0)  
-    # new_x = new_x.T
-    # matplotlib.image.imsave('trimmed_and_resized.png', new_x)    
-    # new_x[new_x < 80.0] = 0
-    # matplotlib.image.imsave('hopefully_fixed.png', new_x)        
-    # new_x = new_x.flatten().reshape(784, 1)
-    # new_x = new_x / 256.0
+    new_image = Image.open('trimmed_rows_and_cols.png')
+    print(new_image.size)
+    new_image = new_image.resize((24, 24), Image.Resampling.LANCZOS)
+    new_x = np.array(new_image)
+    new_x = new_x[:,:,:3]
+    new_x = new_x.mean(axis=2)
+    num_to_add = 2
+    new_x = np.insert(new_x, 0, np.zeros((num_to_add, new_x.shape[1])), axis=0)
+    new_x = np.append(new_x, np.zeros((num_to_add, new_x.shape[1])), axis=0)  
+    new_x = new_x.T  
+    new_x = np.insert(new_x, 0, np.zeros((num_to_add, new_x.shape[1])), axis=0)
+    new_x = np.append(new_x, np.zeros((num_to_add, new_x.shape[1])), axis=0)  
+    new_x = new_x.T
+    matplotlib.image.imsave('trimmed_and_resized.png', new_x)    
+    new_x[new_x < 80.0] = 0
+    matplotlib.image.imsave('hopefully_fixed.png', new_x)        
+    new_x = new_x.flatten().reshape(784, 1)
+    new_x = new_x / 256.0
 
 
     # Generate prediction
