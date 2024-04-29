@@ -7,6 +7,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -dbuild",  
     "start": "cd nn-frontend && npm start",
+    "build": "",
     "postinstall": "cd nn-frontend && npm ci"
   },
   "devDependencies": {

@@ -183,7 +183,7 @@ def main():
     np.divide(inputs, 256.0)
     labels = np.array(df.iloc[:, 0])  
     # nn = MLP([784, 700, 500, 300, 10])
-    nn = MLP([784, 128, 64, 64, 10], "weights.npy", "biases.npy", True)
+    nn = MLP([784, 32, 32, 10], "weights.npy", "biases.npy", True)
     X = np.array(inputs)
     X = X / 256.0
     Y = np.array(labels)
@@ -193,7 +193,7 @@ def main():
 
     print(X.shape)
     print(Y.shape)
-    nn.sgd_train(X_train, y_train, epochs=100, batch_size=2056, lr=0.15)
+    # nn.sgd_train(X_train, y_train, epochs=100, batch_size=2056, lr=0.15)
 
     # actually testing the data
     print(nn.sizes)
