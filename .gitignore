@@ -1,5 +1,6 @@
 __pycache__/
 env/
-*.npy
+# *.npy
 .DS_Store
-/nn-backend/data/*.csv
+*.png
+# /nn-backend/data/*.csv
