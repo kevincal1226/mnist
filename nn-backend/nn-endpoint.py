@@ -8,7 +8,6 @@ from nn import MLP
 from helper import shift_vector, trim_image
 from pathlib import Path
 import matplotlib.image
-import cv2
 
 app = flask.Flask(__name__)
 cors = CORS(app)
@@ -71,7 +70,7 @@ def query_mnist():
 
     # Generate prediction
     # y_pred, _, _ = mnist.forward(x)
-    y_pred, _, _ = mnist.forward(x)
+    y_pred, _, _ = mnist.forward(new_x)
     # print(y_pred)
     response = flask.jsonify({"0": str(y_pred[0][0]),
                               "1": str(y_pred[1][0]),
