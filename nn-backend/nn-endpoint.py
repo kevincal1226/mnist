@@ -45,7 +45,7 @@ def query_mnist():
     # Flatten image, normalize
     x = trim_image(x, 28, 28)
     x = x.flatten().reshape(784, 1)
-    x = x / 255.0
+    x = x / 256.0
     # print(x)
     matplotlib.image.imsave('after_flattening.png', x)
     
@@ -66,7 +66,7 @@ def query_mnist():
     new_x[new_x < 60.0] = 0
     matplotlib.image.imsave('hopefully_fixed.png', new_x)        
     new_x = new_x.flatten().reshape(784, 1)
-    new_x = new_x / 255.0
+    new_x = new_x / 256.0
 
 
     # Generate prediction
