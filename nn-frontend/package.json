@@ -1,7 +1,7 @@
 {
   "name": "nn-frontend",
   "version": "0.1.0",
-  "homepage": "https://kevincal1226.github.io/mnist",
+  "homepage": "https://kevincal1226.github.io/mnist/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
